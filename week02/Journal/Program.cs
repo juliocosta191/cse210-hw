@@ -124,7 +124,10 @@ class Program
                     journal.LoadFromFile(filename);
                     break;
                 case "5":
-                    return; 
+                    return;
+                default:
+                    Console.WriteLine("Invalid choice. Please try again.");
+                    break;
             }
         }
     }
