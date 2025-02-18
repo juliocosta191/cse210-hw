@@ -1,9 +1,34 @@
 using System;
+using System.Collections.Generic;
 
-class Program
+public abstract class Activity
 {
-    static void Main(string[] args)
+    
+    protected DateTime date;
+    protected double lengthInMinutes;
+
+    public Activity(DateTime date, double lengthInMinutes)
     {
-        Console.WriteLine("Hello World! This is the ExerciseTracking Project.");
+        this.date = date;
+        this.lengthInMinutes = lengthInMinutes;
+    }
+
+    public abstract double GetDistance();
+    public abstract double GetSpeed();
+    public abstract double GetPace();
+
+    public virtual string GetSummary()
+    {
+        return $"{date:dd MMM yyyy} {GetType().Name} ({lengthInMinutes} min): Distance {GetDistance()}, Speed {GetSpeed()} {GetUnitSpeed()}, Pace: {GetPace()} {GetUnitPace()}";
+    }
+
+    protected virtual string GetUnitSpeed()
+    {
+        return "mph"; 
+    }
+
+    protected virtual string GetUnitPace()
+    {
+        return "min per mile";
     }
 }
